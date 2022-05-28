@@ -10,6 +10,7 @@ import { RecipieItemComponent } from './recipie/recipie-item/recipie-item.compon
 import { RecipieDetailComponent } from './recipie/recipie-detail/recipie-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipieComponent } from './recipie/recipie.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RecipieComponent } from './recipie/recipie.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
