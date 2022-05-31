@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">
+        <button class="btn btn-success" (click)="onNewRecipe()">
             New Recipie
         </button>
     </div>
@@ -8,6 +8,6 @@
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        <app-recipie-item *ngFor="let recipieEl of recipies" [recipie]="recipieEl" (onSelection)="getInfo(recipieEl)"></app-recipie-item>
+        <app-recipie-item *ngFor="let recipieEl of recipies; let i=index" [recipie]="recipieEl" [index]="i"></app-recipie-item>
     </div>
 </div>

@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Recipie } from '../recipie.model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RecipeServiceService } from 'src/app/services/recipe-service.service';
+import { Recipie } from '../../Model/recipie.model';
 @Component({
   selector: 'app-recipie-list',
   templateUrl: './recipie-list.component.html',
@@ -7,23 +9,14 @@ import { Recipie } from '../recipie.model';
 })
 export class RecipieListComponent implements OnInit {
 
-  @Output()
-  onRecipeSelected=new EventEmitter<Recipie>();
+  recipies!:Recipie[];
 
-  recipies: Recipie[] = [
-    new Recipie('A Test Recipie' , 'Test Recipie' ,
-     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341'),
-     new Recipie('A Another Test Recipie' , 'Test Recipie' ,
-     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341')
-    
-  ];
-
-  constructor() { }
+  constructor(private recipieService: RecipeServiceService, private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.recipies = this.recipieService.getRecipes();
   }
-
-  getInfo(recipie: Recipie){
-    this.onRecipeSelected.emit(recipie);
+  onNewRecipe(){
+    this.router.navigate(['new'],{relativeTo: this.route});
   }
 }

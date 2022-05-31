@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Recipie } from './recipie.model';
+import { RecipeServiceService } from '../services/recipe-service.service';
+import { Recipie } from '../Model/recipie.model';
 
 @Component({
   selector: 'app-recipie',
@@ -8,15 +9,8 @@ import { Recipie } from './recipie.model';
 })
 export class RecipieComponent implements OnInit {
 
-  selectedRecipe!: Recipie;
-  isRecipieSelected=false;
-  constructor() { }
+  constructor(private recipeService:RecipeServiceService) { }
 
   ngOnInit(): void {
-  }
-
-  setRecipie(rec: Recipie){
-    this.selectedRecipe=rec;
-    this.isRecipieSelected=true;
   }
 }
